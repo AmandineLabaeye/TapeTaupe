@@ -33,7 +33,7 @@ function Timer() {
 
     Times = setTimeout(Timer, 1000);
 
-    $("#Temps").html(Seconde + " secondes");
+    $("#Temps").html(Seconde + " secondes sur 10 secondes");
 
     if (Seconde === 10) {
 
@@ -59,6 +59,8 @@ function startGame() {
 
     $(".game").fadeIn();
 
+    TempsAlea = Math.floor(Math.random() * 800 + 200);
+
 }
 
 $("#startGame").click(function () {
@@ -77,23 +79,25 @@ function TrouRandom() {
 
 moles.click(function () {
 
-    TempsAlea = Math.floor(Math.random() * 800 + 200);
+    if($(".hole").hasClass('up')) {
 
-    Score++;
+        Score++;
 
-    scoreBoard.html(Score);
+        $(".hole").removeClass('up');
 
-    Remove();
+        scoreBoard.html(Score);
+
+    }
 
     TrouRdm = setTimeout(TrouRandom, TempsAlea);
 
+    if ($(this).click === 1) {
+
+        Score += 0;
+
+    }
+
 });
-
-function Remove() {
-
-    holes.eq(HoleAlea).removeClass("up");
-
-}
 
 function Reset() {
 
